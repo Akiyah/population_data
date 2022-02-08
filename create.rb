@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/population_data'
 require './lib/params'
 

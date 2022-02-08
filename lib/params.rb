@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 PARAMS = [
   {
     name: '男女別人口（各年10月1日現在）- 総人口，日本人人口（平成12年～27年）',
@@ -8,4 +10,4 @@ PARAMS = [
     stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200524&tstat=000000090001&cycle=0&tclass1=000000090004&tclass2=000000090005&stat_infid=000000090264&cycle_facet=tclass1%3Acycle&tclass3val=0',
     excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000000090264&fileKind=0'
   }
-]
+].freeze
