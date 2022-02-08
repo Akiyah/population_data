@@ -1,4 +1,4 @@
-require './lib/population_data.rb'
+require './lib/population_data'
 
 RSpec.describe PopulationData do
   let(:data) { PopulationData.new }
@@ -16,7 +16,7 @@ RSpec.describe PopulationData do
     allow(downloader).to receive(:download)
   end
 
-  context "#read" do
+  context '#read' do
     it do
       expect(downloader).to receive(:download).with('name1', 'excel_url1')
       expect(downloader).to receive(:download).with('name2', 'excel_url2')

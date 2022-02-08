@@ -6,19 +6,19 @@ class Downloader
   end
 
   def download(name, url)
-    filename_xls = "%s/%s.xls" % [@path, name]
-    filename_xlsx = "%s/%s.xlsx" % [@path, name]
+    filename_xls = format('%s/%s.xls', @path, name)
+    filename_xlsx = format('%s/%s.xlsx', @path, name)
 
     return filename_xls if File.exist?(filename_xls)
     return filename_xlsx if File.exist?(filename_xlsx)
 
     URI.open(url) do |stream|
-      content_disposition = stream.meta["content-disposition"]
+      content_disposition = stream.meta['content-disposition']
       filename = if content_disposition.end_with?('.xls')
-        filename_xls
-      else
-        filename_xlsx
-      end
+                   filename_xls
+                 else
+                   filename_xlsx
+                 end
       puts "download: #{filename}"
       open(filename, 'w+b') do |file|
         file.write(stream.read)

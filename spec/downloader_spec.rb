@@ -1,4 +1,4 @@
-require './lib/downloader.rb'
+require './lib/downloader'
 
 RSpec.describe Downloader do
   let(:downloader) { Downloader.new(path) }
@@ -9,7 +9,7 @@ RSpec.describe Downloader do
   before do
   end
 
-  describe "#download" do
+  describe '#download' do
     context 'xls file exists' do
       let(:path) { 'spec/download/xls/xls' }
 

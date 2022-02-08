@@ -1,5 +1,5 @@
 require 'csv'
-require './lib/downloader.rb'
+require './lib/downloader'
 
 class PopulationData
   def initialize

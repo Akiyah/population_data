@@ -1,5 +1,5 @@
-require './lib/population_data.rb'
-require './lib/params.rb'
+require './lib/population_data'
+require './lib/params'
 
 Dir.mkdir('tsv') unless Dir.exist?('tsv')
 Dir.mkdir('download') unless Dir.exist?('download')
