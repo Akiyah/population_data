@@ -10,3 +10,4 @@ gem 'roo'
 gem 'roo-xls'
 gem 'rspec', require: false
 gem 'rubocop', require: false
+gem 'rubocop-rspec', require: false
