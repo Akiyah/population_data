@@ -9,4 +9,4 @@ Dir.mkdir('download/xls') unless Dir.exist?('download/xls')
 
 data = PopulationData.new
 
-data.read('download/xls', PARAAMS)
+data.read('download/xls', PARAMS)

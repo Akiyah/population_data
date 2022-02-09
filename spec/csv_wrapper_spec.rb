@@ -11,11 +11,11 @@ RSpec.describe CsvWrapper do
         csv_wrapper = CsvWrapper.new(filename)
 
         expect(csv_wrapper.read('Sheet1', 1, 'A')).to eq '1-A1'
-        expect(csv_wrapper.read('Sheet1', 2, 'B')).to eq '1-B2'
-        expect(csv_wrapper.read('Sheet1', 3, 'C')).to eq '1-C3'
+        expect(csv_wrapper.read('Sheet1', 3, 'B')).to eq '1-B3'
+        expect(csv_wrapper.read('Sheet1', 2, 'C')).to eq '1-C2'
         expect(csv_wrapper.read('Sheet2', 1, 'A')).to eq '2-A1'
-        expect(csv_wrapper.read('Sheet2', 2, 'B')).to eq '2-B2'
-        expect(csv_wrapper.read('Sheet2', 3, 'C')).to eq '2-C3'
+        expect(csv_wrapper.read('Sheet2', 3, 'B')).to eq '2-B3'
+        expect(csv_wrapper.read('Sheet2', 2, 'C')).to eq '2-C2'
       end
     end
 
@@ -26,11 +26,11 @@ RSpec.describe CsvWrapper do
         csv_wrapper = CsvWrapper.new(filename)
 
         expect(csv_wrapper.read('Sheet1', 1, 'A')).to eq '1-A1'
-        expect(csv_wrapper.read('Sheet1', 2, 'B')).to eq '1-B2'
-        expect(csv_wrapper.read('Sheet1', 3, 'C')).to eq '1-C3'
+        expect(csv_wrapper.read('Sheet1', 3, 'B')).to eq '1-B3'
+        expect(csv_wrapper.read('Sheet1', 2, 'C')).to eq '1-C2'
         expect(csv_wrapper.read('Sheet2', 1, 'A')).to eq '2-A1'
-        expect(csv_wrapper.read('Sheet2', 2, 'B')).to eq '2-B2'
-        expect(csv_wrapper.read('Sheet2', 3, 'C')).to eq '2-C3'
+        expect(csv_wrapper.read('Sheet2', 3, 'B')).to eq '2-B3'
+        expect(csv_wrapper.read('Sheet2', 2, 'C')).to eq '2-C2'
       end
     end
   end
