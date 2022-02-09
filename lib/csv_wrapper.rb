@@ -16,9 +16,19 @@ class CsvWrapper
 
   def read(sheet, row, column)
     @csv_data[sheet] ||= CSV.parse(@excel.sheet(sheet).to_csv)
+    @csv_data[sheet][row_index(row)][column_index(column)]
+  end
 
-    column_index = ('A'..'Z').to_a.index(column)
-    row_index = row - 1
-    @csv_data[sheet][row_index][column_index]
+  def row_index(row)
+    row - 1
+  end
+
+  def column_index(column)
+    index = 0
+    column.chars.reverse.each_with_index do |char, i|
+      j = ('A'..'Z').to_a.index(char)
+      index += (i.zero? ? j : (j + 1) * (26**i))
+    end
+    index
   end
 end

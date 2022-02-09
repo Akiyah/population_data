@@ -8,5 +8,5 @@ Dir.mkdir('download') unless Dir.exist?('download')
 Dir.mkdir('download/xls') unless Dir.exist?('download/xls')
 
 data = PopulationData.new
-
 data.read('download/xls', PARAMS)
+pp data.data
