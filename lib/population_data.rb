@@ -5,6 +5,8 @@ require './lib/downloader'
 require './lib/reader'
 
 class PopulationData
+  attr_reader :data
+
   def initialize
     @data = {}
   end
@@ -15,7 +17,7 @@ class PopulationData
       filename = downloader.download(param[:name], param[:excel_url])
       reader = Reader.new(filename)
       param[:ranges].each do |range|
-        reader.read(range[:sheet], range[:rows], range[:columns])
+        @data[range[:year]] = reader.read(range[:sheet], range[:rows], range[:columns])
       end
     end
   end
