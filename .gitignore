@@ -57,3 +57,4 @@ build-iPhoneSimulator/
 
 .DS_Store
 /download/
+spec/tsv/population_data.tsv

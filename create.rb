@@ -7,6 +7,6 @@ Dir.mkdir('tsv') unless Dir.exist?('tsv')
 Dir.mkdir('download') unless Dir.exist?('download')
 Dir.mkdir('download/xls') unless Dir.exist?('download/xls')
 
-data = PopulationData.new
-data.read('download/xls', PARAMS)
-pp data.data
+population_data = PopulationData.new
+population_data.read('download/xls', PARAMS)
+population_data.write('tsv/population_data.tsv')

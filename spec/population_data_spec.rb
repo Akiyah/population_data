@@ -3,7 +3,7 @@
 require './lib/population_data'
 
 RSpec.describe PopulationData do
-  let(:data) { PopulationData.new }
+  let(:population_data) { PopulationData.new }
   let(:path_xls) { 'spec/download/xls' }
   let(:filename) { 'spec/download/xls/name.xlsx' }
   let(:params) do
@@ -37,9 +37,32 @@ RSpec.describe PopulationData do
       expect(reader).to receive(:read).with('Sheet2', [3, 4, 5], %w[C D])
       expect(reader).to receive(:read).with('Sheet3', [6, 7, 8], %w[D E])
 
-      data.read(path_xls, params)
+      population_data.read(path_xls, params)
 
-      expect(data.data).to eq({ 1920 => 'data1', 2000 => 'data2', 2001 => 'data3' })
+      expect(population_data.instance_variable_get(:@data)).to eq({ 1920 => 'data1', 2000 => 'data2', 2001 => 'data3' })
+    end
+  end
+
+  context '#write' do
+    let(:data) do
+      {
+        1920 => [[11, 12], [13, 14], [15, 16]],
+        2000 => [[21, 22], [23, 24], [25, 26]],
+        2001 => [[31, 32], [33, 34], [35, 36]]
+      }
+    end
+
+    let(:path) { 'spec/tsv/population_data.tsv' }
+    let(:path_expected) { 'spec/tsv/population_data_expected.tsv' }
+
+    before do
+      population_data.instance_variable_set('@data', data)
+    end
+
+    it do
+      population_data.write(path)
+
+      expect(File.read(path)).to eq File.read(path_expected)
     end
   end
 end
