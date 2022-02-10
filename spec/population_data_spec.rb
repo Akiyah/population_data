@@ -8,13 +8,25 @@ RSpec.describe PopulationData do
   let(:filename) { 'spec/download/xls/name.xlsx' }
   let(:params) do
     [
-      { name: 'name1', excel_url: 'excel_url1', ranges: [
-        { sheet: 'Sheet1', year: 1920, rows: [2, 3, 4], columns: %w[B C] }
-      ] },
-      { name: 'name2', excel_url: 'excel_url2', ranges: [
-        { sheet: 'Sheet2', year: 2000, rows: [3, 4, 5], columns: %w[C D] },
-        { sheet: 'Sheet3', year: 2001, rows: [6, 7, 8], columns: %w[D E] }
-      ] }
+      {
+        name: 'name1',
+        excel_url: 'excel_url1',
+        sheets:
+        {
+          'Sheet1' => [
+            { year: 1920, rows: [2, 3, 4], columns: %w[B C] }
+          ]
+        }
+      }, {
+        name: 'name2',
+        excel_url: 'excel_url2',
+        sheets: {
+          'Sheet2' => [
+            { year: 2000, rows: [3, 4, 5], columns: %w[C D] },
+            { year: 2001, rows: [6, 7, 8], columns: %w[D E] }
+          ]
+        }
+      }
     ]
   end
   let(:downloader) { instance_double(Downloader) }
@@ -35,7 +47,7 @@ RSpec.describe PopulationData do
 
       expect(reader).to receive(:read).with('Sheet1', [2, 3, 4], %w[B C])
       expect(reader).to receive(:read).with('Sheet2', [3, 4, 5], %w[C D])
-      expect(reader).to receive(:read).with('Sheet3', [6, 7, 8], %w[D E])
+      expect(reader).to receive(:read).with('Sheet2', [6, 7, 8], %w[D E])
 
       population_data.read(path_xls, params)
 
@@ -46,9 +58,9 @@ RSpec.describe PopulationData do
   context '#write' do
     let(:data) do
       {
-        1920 => [[11, 12], [13, 14], [15, 16]],
-        2000 => [[21, 22], [23, 24], [25, 26]],
-        2001 => [[31, 32], [33, 34], [35, 36]]
+        1920 => [%w[11 12], %w[13 14], %w[15 16]],
+        2000 => [%w[21 22], %w[23 24], %w[25 26]],
+        2001 => [%w[31 32], %w[33.1 34.9], %w[あいう xxx]]
       }
     end
 
@@ -63,6 +75,14 @@ RSpec.describe PopulationData do
       population_data.write(path)
 
       expect(File.read(path)).to eq File.read(path_expected)
+    end
+  end
+
+  context '#to_number' do
+    it do
+      expect(population_data.to_number(123)).to be 123
+      expect(population_data.to_number(123.5)).to be 123.5
+      expect(population_data.to_number('-')).to be 0
     end
   end
 end

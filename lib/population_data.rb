@@ -14,8 +14,13 @@ class PopulationData
     params.each do |param|
       filename = downloader.download(param[:name], param[:excel_url])
       reader = Reader.new(filename)
-      param[:ranges].each do |range|
-        @data[range[:year]] = reader.read(range[:sheet], range[:rows], range[:columns])
+      param[:sheets].each do |sheet_name, sheet_params|
+        sheet_params.each do |sheet_param|
+          year = sheet_param[:year]
+          rows = sheet_param[:rows]
+          columns = sheet_param[:columns]
+          @data[year] = reader.read(sheet_name, rows, columns)
+        end
       end
     end
   end
@@ -25,9 +30,15 @@ class PopulationData
       tsv << %w[year age male female]
       @data.each do |year, one_year_data|
         one_year_data.each_with_index do |count, i|
-          tsv << [year, i, count[0], count[1]]
+          tsv << [year, i, to_number(count[0]), to_number(count[1])]
         end
       end
     end
+  end
+
+  def to_number(str)
+    i = str.to_i
+    f = str.to_f
+    i == f ? i : f
   end
 end
