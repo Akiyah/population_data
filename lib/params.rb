@@ -99,6 +99,25 @@ PARAMS = [
     name: '男女別人口（各年10月1日現在）- 総人口，日本人人口（平成12年～27年）',
     excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000013168604&fileKind=0',
     stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200524&tstat=000000090001&cycle=0&tclass1=000000090004&tclass2=000001051180&stat_infid=000013168604&cycle_facet=tclass1%3Acycle&tclass3val=0',
-    sheets: {}
+    sheets: {
+      '第4表　総人口' => [
+        { year: 2000, rows: (14..103).to_a + [109], columns: %w[D E] },
+        { year: 2001, rows: (14..103).to_a + [109], columns: %w[G H] },
+        { year: 2002, rows: (14..103).to_a + [109], columns: %w[J K] },
+        { year: 2003, rows: (14..103).to_a + [109], columns: %w[M N] },
+        { year: 2004, rows: (14..103).to_a + [109], columns: %w[P Q] },
+        { year: 2005, rows: 14..114, columns: %w[S T] },
+        { year: 2006, rows: 14..114, columns: %w[V W] },
+        { year: 2007, rows: 14..114, columns: %w[Y Z] },
+        { year: 2008, rows: 14..114, columns: %w[AB AC] },
+        { year: 2009, rows: 14..114, columns: %w[AE AF] },
+        { year: 2010, rows: 14..114, columns: %w[AH AI] },
+        { year: 2011, rows: 14..114, columns: %w[AK AL] },
+        { year: 2012, rows: 14..114, columns: %w[AN AO] },
+        { year: 2013, rows: 14..114, columns: %w[AQ AR] },
+        { year: 2014, rows: 14..114, columns: %w[AT AU] },
+        { year: 2015, rows: 14..114, columns: %w[AW AX] }
+      ]
+    }
   }
 ].freeze
