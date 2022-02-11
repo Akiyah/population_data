@@ -66,8 +66,39 @@ PARAMS = [
         { year: 1970, rows: 13..98, columns: %w[AW AX] },
         { year: 1971, rows: 13..98, columns: %w[AZ BA] }
       ],
-      '昭和47年～54年' => [],
-      '昭和55年～平成12年' => []
+      '昭和47年～54年' => [
+        { year: 1972, rows: 13..98, columns: %w[D E] },
+        { year: 1973, rows: 13..98, columns: %w[G H] },
+        { year: 1974, rows: 13..98, columns: %w[J K] },
+        { year: 1975, rows: 13..98, columns: %w[M N] },
+        { year: 1976, rows: 13..98, columns: %w[P Q] },
+        { year: 1977, rows: 13..98, columns: %w[S T] },
+        { year: 1978, rows: 13..98, columns: %w[V W] },
+        { year: 1979, rows: 13..98, columns: %w[Y Z] }
+      ],
+      '昭和55年～平成12年' => [
+        { year: 1980, rows: 13..103, columns: %w[D E] },
+        { year: 1981, rows: 13..103, columns: %w[G H] },
+        { year: 1982, rows: 13..103, columns: %w[J K] },
+        { year: 1983, rows: 13..103, columns: %w[M N] },
+        { year: 1984, rows: 13..103, columns: %w[P Q] },
+        { year: 1985, rows: 13..103, columns: %w[S T] },
+        { year: 1986, rows: 13..103, columns: %w[V W] },
+        { year: 1987, rows: 13..103, columns: %w[Y Z] },
+        { year: 1988, rows: 13..103, columns: %w[AB AC] },
+        { year: 1989, rows: 13..103, columns: %w[AE AF] },
+        { year: 1990, rows: 13..103, columns: %w[AH AI] },
+        { year: 1991, rows: 13..103, columns: %w[AK AL] },
+        { year: 1992, rows: 13..103, columns: %w[AN AO] },
+        { year: 1993, rows: 13..103, columns: %w[AQ AR] },
+        { year: 1994, rows: 13..103, columns: %w[AT AU] },
+        { year: 1995, rows: 13..103, columns: %w[AW AX] },
+        { year: 1996, rows: 13..103, columns: %w[AZ BA] },
+        { year: 1997, rows: 13..103, columns: %w[BC BD] },
+        { year: 1998, rows: 13..103, columns: %w[BF BG] },
+        { year: 1999, rows: 13..103, columns: %w[BI BJ] },
+        { year: 2000, rows: 13..103, columns: %w[BL BM] }
+      ]
     }
   }
 ].freeze
