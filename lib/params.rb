@@ -47,7 +47,25 @@ PARAMS = [
         { year: 1953, rows: 13..93, columns: %w[AO AP] },
         { year: 1954, rows: 13..93, columns: %w[AR AS] }
       ],
-      '昭和30年～46年' => [],
+      '昭和30年～46年' => [
+        { year: 1955, rows: 13..98, columns: %w[D E] },
+        { year: 1956, rows: 13..98, columns: %w[G H] },
+        { year: 1957, rows: 13..98, columns: %w[J K] },
+        { year: 1958, rows: 13..98, columns: %w[M N] },
+        { year: 1959, rows: 13..98, columns: %w[P Q] },
+        { year: 1960, rows: 13..98, columns: %w[S T] },
+        { year: 1961, rows: 13..98, columns: %w[V W] },
+        { year: 1962, rows: 13..98, columns: %w[Y Z] },
+        { year: 1963, rows: 13..98, columns: %w[AB AC] },
+        { year: 1964, rows: 13..98, columns: %w[AE AF] },
+        { year: 1965, rows: 13..98, columns: %w[AH AI] },
+        { year: 1966, rows: 13..98, columns: %w[AK AL] },
+        { year: 1967, rows: 13..98, columns: %w[AN AO] },
+        { year: 1968, rows: 13..98, columns: %w[AQ AR] },
+        { year: 1969, rows: 13..98, columns: %w[AT AU] },
+        { year: 1970, rows: 13..98, columns: %w[AW AX] },
+        { year: 1971, rows: 13..98, columns: %w[AZ BA] }
+      ],
       '昭和47年～54年' => [],
       '昭和55年～平成12年' => []
     }
