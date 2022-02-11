@@ -119,5 +119,50 @@ PARAMS = [
         { year: 2015, rows: 14..114, columns: %w[AW AX] }
       ]
     }
+  }, {
+    name: '年齢（各歳），男女別人口及び人口性比－総人口，日本人人口(平成28年10月1日現在)',
+    excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031560310&fileKind=0',
+    stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&query=%E5%B9%B4%E9%BD%A2%EF%BC%88%E5%90%84%E6%AD%B3%EF%BC%89%EF%BC%8C%E7%94%B7%E5%A5%B3%E5%88%A5%E4%BA%BA%E5%8F%A3&sort=year_month%20asc&layout=dataset&bunya_l=02&cycle=7&stat_infid=000031560310&metadata=1&data=1',
+    sheets: {
+      '第１表' => [
+        { year: 2016, rows: (20..69).to_a + (92..142).to_a, columns: %w[K L] }
+      ]
+    }
+  }, {
+    name: '年齢（各歳），男女別人口及び人口性比－総人口，日本人人口(平成29年10月1日現在)',
+    excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031690314&fileKind=0',
+    stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&query=%E5%B9%B4%E9%BD%A2%EF%BC%88%E5%90%84%E6%AD%B3%EF%BC%89%EF%BC%8C%E7%94%B7%E5%A5%B3%E5%88%A5%E4%BA%BA%E5%8F%A3&sort=year_month%20asc&layout=dataset&bunya_l=02&cycle=7&stat_infid=000031690314&metadata=1&data=1',
+    sheets: {
+      '第１表' => [
+        { year: 2017, rows: (20..69).to_a + (92..142).to_a, columns: %w[K L] }
+      ]
+    }
+  }, {
+    name: '年齢（各歳），男女別人口及び人口性比－総人口，日本人人口(平成30年10月1日現在)',
+    excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031807138&fileKind=0',
+    stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&query=%E5%B9%B4%E9%BD%A2%EF%BC%88%E5%90%84%E6%AD%B3%EF%BC%89%EF%BC%8C%E7%94%B7%E5%A5%B3%E5%88%A5%E4%BA%BA%E5%8F%A3&sort=year_month%20asc&layout=dataset&bunya_l=02&cycle=7&stat_infid=000031807138&metadata=1&data=1',
+    sheets: {
+      '第１表' => [
+        { year: 2018, rows: (20..69).to_a + (92..142).to_a, columns: %w[K L] }
+      ]
+    }
+  }, {
+    name: '年齢（各歳），男女別人口及び人口性比－総人口，日本人人口(2019年10月1日現在)',
+    excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031921670&fileKind=0',
+    stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&query=%E5%B9%B4%E9%BD%A2%EF%BC%88%E5%90%84%E6%AD%B3%EF%BC%89%EF%BC%8C%E7%94%B7%E5%A5%B3%E5%88%A5%E4%BA%BA%E5%8F%A3&sort=year_month%20asc&layout=dataset&bunya_l=02&cycle=7&stat_infid=000031921670&metadata=1&data=1',
+    sheets: {
+      '第１表' => [
+        { year: 2019, rows: (20..69).to_a + (92..142).to_a, columns: %w[K L] }
+      ]
+    }
+  }, {
+    name: '年齢（各歳），男女別人口－総人口，日本人人口(2020年10月1日現在)',
+    excel_url: 'https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032153669&fileKind=4',
+    stat_url: 'https://www.e-stat.go.jp/stat-search/files?page=1&query=%E5%B9%B4%E9%BD%A2%EF%BC%88%E5%90%84%E6%AD%B3%EF%BC%89%EF%BC%8C%E7%94%B7%E5%A5%B3%E5%88%A5%E4%BA%BA%E5%8F%A3&sort=year_month%20asc&layout=dataset&bunya_l=02&cycle=7&stat_infid=000032153669&metadata=1&data=1',
+    sheets: {
+      '第１表' => [
+        { year: 2020, rows: (18..67).to_a + (90..140).to_a, columns: [5, 6] }
+      ]
+    }
   }
 ].freeze

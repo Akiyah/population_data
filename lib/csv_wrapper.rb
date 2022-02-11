@@ -24,6 +24,8 @@ class CsvWrapper
   end
 
   def column_index(column)
+    return column - 1 if column.is_a?(Numeric)
+
     index = 0
     column.chars.reverse.each_with_index do |char, i|
       j = ('A'..'Z').to_a.index(char)
