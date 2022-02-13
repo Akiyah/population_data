@@ -15,8 +15,7 @@ function createDataset(label, backgroundColor, data) {
     label: label,
     lineTension: 0,
     backgroundColor: backgroundColor,
-    borderColor: 'black',
-    borderWidth: 1,
+    borderWidth: 0,
     data: data
   };
 }
@@ -28,20 +27,26 @@ function createConfig(yms, datasets, title) {
       datasets: datasets
     },
     options: {
+      indexAxis: 'y',
       title: {
         display: true,
         text: title,
       },
       scales: {
-        xAxes: [{
+        x: {
           stacked: true,
-        }],
-        yAxes: [{
-          stacked: true,
+          min: -1500,
+          max: 1500,
+          stepSize: 100,
           ticks: {
-            beginAtZero: true
-          }
-        }]
+            callback: function (value, index, values) {
+                return `${Math.abs(value)}`;
+            }
+          },
+        },
+        y: {
+          stacked: true
+        }
       }
     }
   };
@@ -74,16 +79,16 @@ function drawChart(data, year) {
   let ages = Array(101).fill().map((_, i) => i);
   let datasets = [];
   
-  datasets.push(createDataset(  'male', 'BLUE', data[year].map(counts => counts[0])));
-  datasets.push(createDataset('female', 'RED', data[year].map(counts => counts[1])));
+  datasets.push(createDataset(  'male', 'BLUE', data[year].map(counts => -counts[0]).reverse()));
+  datasets.push(createDataset('female', 'RED', data[year].map(counts => counts[1]).reverse()));
 
   let ctx = document.getElementById("chart").getContext("2d");
-  return new Chart(ctx, createConfig(ages, datasets, "年齢（各歳），男女別人口"));
+  return new Chart(ctx, createConfig(ages.reverse(), datasets, "年齢（各歳），男女別人口"));
 }
 
 function updateChart(data, chart, year) {
-  chart.data.datasets[0].data = data[year].map(counts => counts[0]);
-  chart.data.datasets[1].data = data[year].map(counts => counts[1]);
+  chart.data.datasets[0].data = data[year].map(counts => -counts[0]).reverse();
+  chart.data.datasets[1].data = data[year].map(counts => counts[1]).reverse();
 
   chart.update();
 }
