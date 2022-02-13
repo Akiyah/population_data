@@ -1,8 +1,9 @@
 function createDataset(label, backgroundColor, data) {
   return {
     label: label,
-    lineTension: 0,
     backgroundColor: backgroundColor,
+    barPercentage: 1.0,
+    categoryPercentage: 1.0,
     borderWidth: 0,
     data: data
   };
