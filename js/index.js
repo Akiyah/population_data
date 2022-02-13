@@ -1,15 +1,3 @@
-var COLORS = [
-  '#4C00FF',
-  '#004CFF',
-  '#00E5FF',
-  '#00FF4D',
-  '#4DFF00',
-  '#E6FF00',
-  '#FFFF00',
-  '#FFDE59',
-  '#FFE0B3',
-];
-
 function createDataset(label, backgroundColor, data) {
   return {
     label: label,
@@ -28,6 +16,9 @@ function createConfig(yms, datasets, title) {
     },
     options: {
       indexAxis: 'y',
+      animation: {
+        duration: 0
+      },
       title: {
         display: true,
         text: title,
@@ -39,13 +30,19 @@ function createConfig(yms, datasets, title) {
           max: 1500,
           stepSize: 100,
           ticks: {
-            callback: function (value, index, values) {
-                return `${Math.abs(value)}`;
-            }
+            callback: (value, index, values) => `${Math.abs(value)}`
           },
         },
         y: {
           stacked: true
+        }
+      },
+      plugins: {
+        tooltip: {
+          yAlign: 'bottom',
+          callbacks: {
+            label: (context) => `${context.dataset.label}: ${Math.abs(context.raw)}`
+          }
         }
       }
     }
@@ -68,27 +65,37 @@ function createData(csv) {
     let female = Number(row[3]);
 
     if (!data[year]) {
-      data[year] = Array(101).fill().map((_, i) => [0, 0]);
+      data[year] = {
+        male: Array(101).fill().map((_, i) => 0),
+        female: Array(101).fill().map((_, i) => 0)
+      };
     }
-    data[year][age] = [male, female];
+    data[year].male[age] = -male;
+    data[year].female[age] = female;
   });
+
+  data.forEach((yearData, i) => {
+    yearData.male.reverse();
+    yearData.female.reverse();
+  });
+
   return data;
 }
 
 function drawChart(data, year) {
-  let ages = Array(101).fill().map((_, i) => i);
+  let ages = Array(101).fill().map((_, i) => i).reverse();
   let datasets = [];
   
-  datasets.push(createDataset(  'male', 'BLUE', data[year].map(counts => -counts[0]).reverse()));
-  datasets.push(createDataset('female', 'RED', data[year].map(counts => counts[1]).reverse()));
+  datasets.push(createDataset('male', 'BLUE', data[year].male));
+  datasets.push(createDataset('female', 'RED', data[year].female));
 
   let ctx = document.getElementById("chart").getContext("2d");
-  return new Chart(ctx, createConfig(ages.reverse(), datasets, "年齢（各歳），男女別人口"));
+  return new Chart(ctx, createConfig(ages, datasets, "年齢（各歳），男女別人口"));
 }
 
 function updateChart(data, chart, year) {
-  chart.data.datasets[0].data = data[year].map(counts => -counts[0]).reverse();
-  chart.data.datasets[1].data = data[year].map(counts => counts[1]).reverse();
+  chart.data.datasets[0].data = data[year].male;
+  chart.data.datasets[1].data = data[year].female;
 
   chart.update();
 }
@@ -106,9 +113,9 @@ yearSlider.addEventListener('input', (event) => {
 
 let req = new XMLHttpRequest();
 req.open("GET", 'tsv/population_data.tsv', true);
-req.onload = function() {
+req.onload = () => {
   data = createData(req.responseText);
   chart = drawChart(data, 2020);
-}
+};
 req.send(null);
 
