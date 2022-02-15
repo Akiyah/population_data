@@ -9,3 +9,5 @@
 ## グラフ
 
 https://akiyah.github.io/population_data/
+
+![animation](animation.gif "animatino")
