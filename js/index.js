@@ -20,10 +20,6 @@ function createConfig(yms, datasets, title) {
       animation: {
         duration: 0
       },
-      title: {
-        display: true,
-        text: title,
-      },
       scales: {
         x: {
           stacked: true,
@@ -39,6 +35,10 @@ function createConfig(yms, datasets, title) {
         }
       },
       plugins: {
+        title: {
+          display: true,
+          text: title,
+        },
         tooltip: {
           yAlign: 'bottom',
           callbacks: {
