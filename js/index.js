@@ -1,3 +1,7 @@
+function isSmartPhone() {
+  return (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches);
+}
+
 function createDataset(label, backgroundColor, data) {
   return {
     label: label,
@@ -20,6 +24,7 @@ function createConfig(yms, datasets, title) {
       animation: {
         duration: 0
       },
+      aspectRatio: isSmartPhone() ? 1 : 2,
       scales: {
         x: {
           stacked: true,
