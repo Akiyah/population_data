@@ -47,7 +47,7 @@ function createConfig(yms, datasets, title) {
         tooltip: {
           yAlign: 'bottom',
           callbacks: {
-            label: (context) => `${context.dataset.label}: ${Math.abs(context.raw)}`
+            label: (context) => `${context.dataset.label}: ${Math.abs(context.raw)} (year:${year()})`
           }
         }
       }
@@ -111,10 +111,14 @@ let chart;
 
 let yearSlider = document.getElementById('yearSlider');
 let yearLabel = document.getElementById('yearLabel');
+
+function year() {
+  return Number(yearSlider.value);
+}
+
 yearSlider.addEventListener('input', (event) => {
-  let year = Number(yearSlider.value);
-  yearLabel.innerText = year;
-  updateChart(data, chart, year);
+  yearLabel.innerText = year();
+  updateChart(data, chart, year());
 });
 
 let req = new XMLHttpRequest();
@@ -124,4 +128,3 @@ req.onload = () => {
   chart = drawChart(data, 2020);
 };
 req.send(null);
-
